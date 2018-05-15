@@ -1,3 +1,6 @@
-import cProfile
+import time
 from alch_commint import create_list_ord
-cProfile.run("create_list_ord(10).digest()")
+
+start_time = time.time()
+create_list_ord(500)
+print("--- %s seconds ---" % (time.time() - start_time))
