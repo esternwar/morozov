@@ -52,5 +52,3 @@ def create_list_per(n,ord):
     session.add_all(per)
     session.commit()
     session.close()
-
-create_list_ord(10)
