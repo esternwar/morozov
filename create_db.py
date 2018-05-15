@@ -17,9 +17,9 @@ class Person(Base):
     name = Column(String)
     phone = Column(String)
     area = Column(String)
-    placedOrder = Column(String)
-    giveOrder = Column(String)
-    rate = Column(String)
+    placedOrder = Column(Integer)
+    giveOrder = Column(Integer)
+    rate = Column(Integer)
 
     # ----------------------------------------------------------------------
     def __init__(self, id, name, phone, area, placedorder, giveOrder, rate):
@@ -36,8 +36,8 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    personId = Column(String)
-    orderFlg = Column(String)
+    personId = Column(Integer)
+    orderFlg = Column(Integer)
 
     def __init__(self, id, name, personId,orderFlg):
         self.id = id
