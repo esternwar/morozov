@@ -43,13 +43,14 @@ def create_list_per(n,ord):
         for i in range(n):
             if(ord[i].personId == j):
                 if(ord[i].orderFlg == 0):
-                    conut_giv +1
+                    conut_giv= conut_giv +1
                 if (ord[i].orderFlg == 1):
-                    conut_plc + 1
+                    conut_plc = conut_plc + 1
         per.append(Person(j, names[one]+ " " +lastnames[two],"+7" + str(num), areas[are],conut_giv,conut_plc, rate))
-        count_plc = 0
-        count_giv = 0
+
 
     session.add_all(per)
     session.commit()
     session.close()
+
+create_list_ord(10)
