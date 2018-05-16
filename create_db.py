@@ -17,18 +17,15 @@ class Person(Base):
     name = Column(String)
     phone = Column(String)
     area = Column(String)
-    placedOrder = Column(Integer)
-    giveOrder = Column(Integer)
     rate = Column(Integer)
+    orders = relationship('Order', backref="person")
 
     # ----------------------------------------------------------------------
-    def __init__(self, id, name, phone, area, placedorder, giveOrder, rate):
+    def __init__(self, id, name, phone, area, rate):
         self.id = id
         self.name = name
         self.phone = phone
         self.area = area
-        self.placedOrder = placedorder
-        self.giveOrder = giveOrder
         self.rate = rate
 
 class Order(Base):
@@ -36,13 +33,13 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    personId = Column(Integer)
     orderFlg = Column(Integer)
+    order_id = Column(Integer, ForeignKey('order.id'))
+    user = relationship("Person", back_populates="order")
 
-    def __init__(self, id, name, personId,orderFlg):
+    def __init__(self, id, name,orderFlg):
         self.id = id
         self.name = name
-        self.personId = personId
         self.orderFlg = orderFlg
 
 # create tables
