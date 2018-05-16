@@ -16,13 +16,12 @@ def create_list_ord(n):
     order = []
     for j in range(n):
         name = random.randint(0, 8)
-        personId = random.randint(0, n)
         pr_flag = random.randint(0, 1)
-        order.append(Order(j, oder_names[name], personId, pr_flag))
-    session.add_all(order)
-    session.commit()
+        order.append(Order(j, oder_names[name], pr_flag))
+        session.add(Order(j, oder_names[name], pr_flag))
+    #session.commit()
 
-    create_list_per(n, order)
+    #create_list_per(n, order)
 
 def create_list_per(n,ord):
     names = ["Alex", "Viktor", "Andry", "Max", "Stive", "Oleg", "Vladimir", "Gosha"]
@@ -38,6 +37,7 @@ def create_list_per(n,ord):
         num = random.randint(1000000000, 1999999999)
         are = random.randint(0, 7)
         rate = random.randint(0, 10)
+        '''
         conut_giv = 0
         conut_plc = 0
         for i in range(n):
@@ -46,9 +46,14 @@ def create_list_per(n,ord):
                     conut_giv= conut_giv +1
                 if (ord[i].orderFlg == 1):
                     conut_plc = conut_plc + 1
-        per.append(Person(j, names[one]+ " " +lastnames[two],"+7" + str(num), areas[are],conut_giv,conut_plc, rate))
+        '''
+        #per.append(Person(j, names[one]+ " " +lastnames[two],"+7" + str(num), areas[are], rate))
+        obj = Person(j, names[one]+ " " +lastnames[two],"+7" + str(num), areas[are], rate, )
+        obj.orders.append(Order(0,"",0))
+        session.add(obj)
 
+    #session.commit()
+    #session.close()
 
-    session.add_all(per)
-    session.commit()
-    session.close()
+create_list_per(5,0)
+#create_list_ord(5)
