@@ -34,7 +34,7 @@ class Order(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     orderFlg = Column(Integer)
-    order_id = Column(Integer, ForeignKey('person.id'))
+    person_id = Column(Integer, ForeignKey('person.id'))
     person = relationship("Person", back_populates="order")
 
     def __init__(self, id, name,orderFlg):

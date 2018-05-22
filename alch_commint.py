@@ -37,15 +37,14 @@ def create_list_per(n,ord):
         num = random.randint(1000000000, 1999999999)
         are = random.randint(0, 7)
         rate = random.randint(0, 10)
-
+        per_id = random.randint(0,n)
         #per.append(Person(j, names[one]+ " " +lastnames[two],"+7" + str(num), areas[are], rate))
         obj = Person(j, names[one]+ " " +lastnames[two],"+7" + str(num), areas[are], rate)
-        obj.order.append(ord[0])
+        obj.order.append(ord[per_id])
         per.append(obj)
         #session.add(obj)
     session.add_all(ord)
     session.add_all(per)
     session.commit()
-    #session.close()
 
-create_list_ord(5)
+create_list_ord(100)
